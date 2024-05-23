@@ -1,0 +1,17 @@
+{
+  "name": "practice-environment",
+  "version": "1.0.0",
+  "description": "Node Practice",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.0.1",
+    "prettier": "^3.0.2"
+  }
+}
