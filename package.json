@@ -9,7 +9,7 @@
     "start": "nodemon dist/index.js",
     "lint": "npx eslint .",
     "build": "tsc -w -p tsconfig.build.json",
-    "test": "jest --watch"
+    "test": "jest --watch --coverage"
   },
   "keywords": [],
   "author": "",
