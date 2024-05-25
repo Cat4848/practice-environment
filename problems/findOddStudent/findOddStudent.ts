@@ -1,11 +1,21 @@
 export class StudentsProject {
   constructor(studentsID: number[]) {
-    this.studentsID = studentsID;
+    this.#studentsID = studentsID;
   }
 
   #onlyUniqueIDsSet = new Set<number>();
   #oddStudentID: number = 0;
-  studentsID: number[] = [];
+  #studentsID: number[] = [];
+
+  findOddStudent() {
+    this.#studentsID.forEach((studentID) => {
+      if (!this.#isInUniqueIDsSet(studentID)) {
+        this.#addToUniqueIDsSet(studentID);
+        this.#oddStudentID = studentID;
+      }
+    });
+    return this.#oddStudentID;
+  }
 
   #isInUniqueIDsSet(studentID: number) {
     return this.#onlyUniqueIDsSet.has(studentID);
@@ -13,15 +23,5 @@ export class StudentsProject {
 
   #addToUniqueIDsSet(studentID: number) {
     this.#onlyUniqueIDsSet.add(studentID);
-  }
-
-  findOddStudent() {
-    this.studentsID.forEach((studentID) => {
-      if (!this.#isInUniqueIDsSet(studentID)) {
-        this.#addToUniqueIDsSet(studentID);
-        this.#oddStudentID = studentID;
-      }
-    });
-    return this.#oddStudentID;
   }
 }
