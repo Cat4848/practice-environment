@@ -1,4 +1,4 @@
-import { StudentsProject } from "../findOddStudent";
+import { StudentsProject } from "../StudentsProject";
 
 test("if the correct odd student is returned", () => {
   const studentsID = [2, 4, 5, 4, 2];
