@@ -3,25 +3,35 @@ export class StudentsProject {
     this.#studentsID = studentsID;
   }
 
-  #onlyUniqueIDsSet = new Set<number>();
-  #oddStudentID: number = 0;
+  #unpairedStudentsID = new Set<number>();
+  #allStudentsID = new Set<number>();
   #studentsID: number[] = [];
 
   findOddStudent() {
     this.#studentsID.forEach((studentID) => {
-      if (!this.#isInUniqueIDsSet(studentID)) {
-        this.#addToUniqueIDsSet(studentID);
-        this.#oddStudentID = studentID;
+      if (!this.#isInAllStudentsSet(studentID)) {
+        this.#addToAllStudentsSet(studentID);
+        this.#addToUnpairedStudentsSet(studentID);
+      } else {
+        this.#deleteFromUnpairedStudentsSet(studentID);
       }
     });
-    return this.#oddStudentID;
+    return this.#unpairedStudentsID;
   }
 
-  #isInUniqueIDsSet(studentID: number) {
-    return this.#onlyUniqueIDsSet.has(studentID);
+  #isInAllStudentsSet(studentID: number) {
+    return this.#allStudentsID.has(studentID);
   }
 
-  #addToUniqueIDsSet(studentID: number) {
-    this.#onlyUniqueIDsSet.add(studentID);
+  #addToAllStudentsSet(studentID: number) {
+    this.#allStudentsID.add(studentID);
+  }
+
+  #addToUnpairedStudentsSet(studentID: number) {
+    this.#unpairedStudentsID.add(studentID);
+  }
+
+  #deleteFromUnpairedStudentsSet(studentID: number) {
+    this.#unpairedStudentsID.delete(studentID);
   }
 }
