@@ -7,7 +7,7 @@ export class StudentsProject {
   #allStudentsID = new Set<number>();
   #studentsID: number[] = [];
 
-  findOddStudent() {
+  findUnpairedStudents() {
     this.#studentsID.forEach((studentID) => {
       if (!this.#isInAllStudentsSet(studentID)) {
         this.#addToAllStudentsSet(studentID);
