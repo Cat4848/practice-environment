@@ -4,6 +4,7 @@ export class StudentsProject {
   }
 
   #unpairedStudentsID = new Set<number>();
+  #pairedStudentsID = new Set<number>();
   #allStudentsID = new Set<number>();
   #studentsID: number[] = [];
 
@@ -17,6 +18,17 @@ export class StudentsProject {
       }
     });
     return this.#unpairedStudentsID;
+  }
+
+  getPairedStudents() {
+    this.#studentsID.forEach((studentID) => {
+      if (this.#isInAllStudentsSet(studentID)) {
+        this.#addToPairedStudentsSet(studentID);
+      } else {
+        this.#addToAllStudentsSet(studentID);
+      }
+    });
+    return this.#pairedStudentsID;
   }
 
   #isInAllStudentsSet(studentID: number) {
@@ -33,5 +45,9 @@ export class StudentsProject {
 
   #deleteFromUnpairedStudentsSet(studentID: number) {
     this.#unpairedStudentsID.delete(studentID);
+  }
+
+  #addToPairedStudentsSet(studentID: number) {
+    this.#pairedStudentsID.add(studentID);
   }
 }
