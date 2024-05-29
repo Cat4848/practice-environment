@@ -9,11 +9,11 @@ export class StudentsProject {
 
   getUnpairedStudents() {
     this.#studentsID.forEach((studentID) => {
-      if (!this.#isInAllStudentsSet(studentID)) {
+      if (this.#isInAllStudentsSet(studentID)) {
+        this.#deleteFromUnpairedStudentsSet(studentID);
+      } else {
         this.#addToAllStudentsSet(studentID);
         this.#addToUnpairedStudentsSet(studentID);
-      } else {
-        this.#deleteFromUnpairedStudentsSet(studentID);
       }
     });
     return this.#unpairedStudentsID;
