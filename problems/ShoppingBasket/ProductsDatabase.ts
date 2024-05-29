@@ -1,5 +1,3 @@
-class ShoppingBasket {}
-
 export class ProductsDatabase {
   async getProducts(url: string) {
     try {
