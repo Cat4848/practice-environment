@@ -1,11 +1,6 @@
-interface Product {
-  product_uuid: string;
-  retail_price: {
-    price: number;
-    measure: string;
-  };
-}
-export class ProductsDatabase {
+import { Product } from "./interfaces";
+
+export default class ProductsDatabase {
   async getProducts(url: string) {
     try {
       const products = await this.#getProductsFromUrl(url);

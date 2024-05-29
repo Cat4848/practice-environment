@@ -1,4 +1,4 @@
-import { ProductsDatabase } from "../../ProductsDatabase";
+import ProductsDatabase from "../../ProductsDatabase";
 
 export default async function getProductsFromDatabase(databaseUrl: string) {
   const db = new ProductsDatabase();
