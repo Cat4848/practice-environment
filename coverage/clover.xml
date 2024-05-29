@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1716990693483" clover="3.2.0">
-  <project timestamp="1716990693483" name="All files">
+<coverage generated="1716992430232" clover="3.2.0">
+  <project timestamp="1716992430232" name="All files">
     <metrics statements="9" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1" elements="10" coveredelements="9" complexity="0" loc="9" ncloc="9" packages="2" files="2" classes="2"/>
     <package name="ShoppingBasket">
       <metrics statements="8" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="ProductsDatabase.ts" path="/Users/cata/Documents/education/Programming/Practice/JavaScript/practice-environment/problems/ShoppingBasket/ProductsDatabase.ts">
         <metrics statements="8" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="7" count="0" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
         <line num="12" count="1" type="stmt"/>
-        <line num="13" count="1" type="stmt"/>
-        <line num="14" count="1" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
       </file>
     </package>
     <package name="ShoppingBasket.__tests__.helpers">

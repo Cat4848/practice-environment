@@ -1,3 +1,10 @@
+interface Product {
+  product_uuid: string;
+  retail_price: {
+    price: number;
+    measure: string;
+  };
+}
 export class ProductsDatabase {
   async getProducts(url: string) {
     try {
@@ -10,7 +17,7 @@ export class ProductsDatabase {
 
   async #getProductsFromUrl(url: string) {
     const request = await fetch(url);
-    const products = await request.json();
+    const products: Product[] = await request.json();
     return products;
   }
 }
