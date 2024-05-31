@@ -18,10 +18,11 @@ export default class ShoppingBasket {
   }
 
   #basketProductsID: string[] = [];
+  #basketProductsIDQuantityMap = new Map<string, number>();
 
   getShoppingBasketContents(productsDatabase: Product[]) {
-    const basketProductsIDQuantityMap =
-      this.#createBasketProductsIDQuantityMap();
+    this.#createBasketProductsIDQuantityMap();
+    const basketLines = this.#createBasketLines(productsDatabase);
 
     const basket: Basket = {
       lines: [],
@@ -31,7 +32,7 @@ export default class ShoppingBasket {
 
     const basketContents: Basket = productsDatabase.reduce(
       (basket, product) => {
-        const currentProductQuantity = basketProductsIDQuantityMap.get(
+        const currentProductQuantity = this.#basketProductsIDQuantityMap.get(
           product.product_uid
         );
         if (currentProductQuantity) {
@@ -51,24 +52,22 @@ export default class ShoppingBasket {
     return JSON.stringify(basketContents);
   }
 
-  #createBasketProductsIDQuantityMap(): Map<string, number> {
-    const basketProductsIDQuantityMap = new Map<string, number>();
+  #createBasketProductsIDQuantityMap(): void {
     this.#basketProductsID.forEach((productID) => {
-      const productIDValue = basketProductsIDQuantityMap.get(productID);
+      const productIDValue = this.#basketProductsIDQuantityMap.get(productID);
 
       if (productIDValue) {
-        basketProductsIDQuantityMap.set(productID, productIDValue + 1);
+        this.#basketProductsIDQuantityMap.set(productID, productIDValue + 1);
       } else {
-        basketProductsIDQuantityMap.set(productID, 1);
+        this.#basketProductsIDQuantityMap.set(productID, 1);
       }
     });
-    return basketProductsIDQuantityMap;
   }
 
   #createBasketLines(productsDatabase: Product[]): BasketLine[] {
     const basketLines: BasketLine[] = [];
     productsDatabase.forEach((product) => {
-      const productQuantity = basketProductsIDQuantityMap.get(
+      const productQuantity = this.#basketProductsIDQuantityMap.get(
         product.product_uid
       );
       if (productQuantity) {
