@@ -21,14 +21,14 @@ export default class ShoppingBasket {
   #basketProductsIDQuantityMap = new Map<string, number>();
 
   getShoppingBasketContents(productsDatabase: Product[]) {
-    this.#createBasketProductsIDQuantityMap();
+    this.#createBasketQuantityMap();
     const basketLines: BasketLine[] = this.#createBasketLines(productsDatabase);
     const completeBasket: Basket = this.#createCompleteBasket(basketLines);
 
     return JSON.stringify(completeBasket);
   }
 
-  #createBasketProductsIDQuantityMap(): void {
+  #createBasketQuantityMap(): void {
     this.#basketProductsID.forEach((productID) => {
       const productIDValue = this.#basketProductsIDQuantityMap.get(productID);
 
