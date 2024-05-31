@@ -28,6 +28,7 @@ export default class ShoppingBasket {
       totalItemCount: 0,
       total: 0
     };
+
     const basketContents: Basket = productsDatabase.reduce(
       (basket, product) => {
         const currentProductQuantity = basketProductsIDQuantityMap.get(
@@ -50,7 +51,7 @@ export default class ShoppingBasket {
     return JSON.stringify(basketContents);
   }
 
-  #createBasketProductsIDQuantityMap() {
+  #createBasketProductsIDQuantityMap(): Map<string, number> {
     const basketProductsIDQuantityMap = new Map<string, number>();
     this.#basketProductsID.forEach((productID) => {
       const productIDValue = basketProductsIDQuantityMap.get(productID);
@@ -62,5 +63,23 @@ export default class ShoppingBasket {
       }
     });
     return basketProductsIDQuantityMap;
+  }
+
+  #createBasketLines(productsDatabase: Product[]): BasketLine[] {
+    const basketLines: BasketLine[] = [];
+    productsDatabase.forEach((product) => {
+      const productQuantity = basketProductsIDQuantityMap.get(
+        product.product_uid
+      );
+      if (productQuantity) {
+        const basketLine: BasketLine = {
+          uid: product.product_uid,
+          quantity: productQuantity,
+          subtotal: product.retail_price.price * productQuantity
+        };
+        basketLines.push(basketLine);
+      }
+    });
+    return basketLines;
   }
 }
