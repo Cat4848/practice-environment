@@ -22,34 +22,10 @@ export default class ShoppingBasket {
 
   getShoppingBasketContents(productsDatabase: Product[]) {
     this.#createBasketProductsIDQuantityMap();
-    const basketLines = this.#createBasketLines(productsDatabase);
+    const basketLines: BasketLine[] = this.#createBasketLines(productsDatabase);
+    const completeBasket: Basket = this.#createCompleteBasket(basketLines);
 
-    const basket: Basket = {
-      lines: [],
-      totalItemCount: 0,
-      total: 0
-    };
-
-    const basketContents: Basket = productsDatabase.reduce(
-      (basket, product) => {
-        const currentProductQuantity = this.#basketProductsIDQuantityMap.get(
-          product.product_uid
-        );
-        if (currentProductQuantity) {
-          basket.lines.push({
-            uid: product.product_uid,
-            quantity: currentProductQuantity,
-            subtotal: product.retail_price.price * currentProductQuantity
-          });
-          basket.totalItemCount += currentProductQuantity;
-          basket.total += product.retail_price.price * currentProductQuantity;
-        }
-        return basket;
-      },
-      basket
-    );
-
-    return JSON.stringify(basketContents);
+    return JSON.stringify(completeBasket);
   }
 
   #createBasketProductsIDQuantityMap(): void {
@@ -80,5 +56,21 @@ export default class ShoppingBasket {
       }
     });
     return basketLines;
+  }
+
+  #createCompleteBasket(basketLines: BasketLine[]): Basket {
+    const basket: Basket = {
+      lines: [],
+      totalItemCount: 0,
+      total: 0
+    };
+
+    const completeBasket: Basket = basketLines.reduce((basket, line) => {
+      basket.lines.push(line);
+      basket.totalItemCount += line.quantity;
+      basket.total += line.subtotal;
+      return basket;
+    }, basket);
+    return completeBasket;
   }
 }
