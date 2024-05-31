@@ -48,11 +48,10 @@ export default class ShoppingBasket {
         product.product_uid
       );
       if (productQuantity) {
-        const basketLine: BasketLine = {
-          uid: product.product_uid,
-          quantity: productQuantity,
-          subtotal: product.retail_price.price * productQuantity
-        };
+        const basketLine: BasketLine = this.#createBasketLine(
+          product,
+          productQuantity
+        );
         basketLines.push(basketLine);
       }
     });
@@ -79,5 +78,14 @@ export default class ShoppingBasket {
     productID: string
   ): number | undefined {
     return this.#basketProductsQuantityMap.get(productID);
+  }
+
+  #createBasketLine(product: Product, productQuantity: number): BasketLine {
+    const basketLine: BasketLine = {
+      uid: product.product_uid,
+      quantity: productQuantity,
+      subtotal: product.retail_price.price * productQuantity
+    };
+    return basketLine;
   }
 }
