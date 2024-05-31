@@ -18,9 +18,9 @@ export default class ShoppingBasket {
   }
 
   #basketProductsID: string[] = [];
-  #basketProductsIDQuantityMap = new Map<string, number>();
+  #basketProductsQuantityMap = new Map<string, number>();
 
-  getShoppingBasketContents(productsDatabase: Product[]) {
+  getShoppingBasketContents(productsDatabase: Product[]): string {
     this.#createBasketQuantityMap();
     const basketLines: BasketLine[] = this.#createBasketLines(productsDatabase);
     const completeBasket: Basket = this.#createCompleteBasket(basketLines);
@@ -30,12 +30,13 @@ export default class ShoppingBasket {
 
   #createBasketQuantityMap(): void {
     this.#basketProductsID.forEach((productID) => {
-      const productIDValue = this.#basketProductsIDQuantityMap.get(productID);
+      const productQuantity =
+        this.#isProductInQuantityMapAndReturnItsValue(productID);
 
-      if (productIDValue) {
-        this.#basketProductsIDQuantityMap.set(productID, productIDValue + 1);
+      if (productQuantity) {
+        this.#basketProductsQuantityMap.set(productID, productQuantity + 1);
       } else {
-        this.#basketProductsIDQuantityMap.set(productID, 1);
+        this.#basketProductsQuantityMap.set(productID, 1);
       }
     });
   }
@@ -43,7 +44,7 @@ export default class ShoppingBasket {
   #createBasketLines(productsDatabase: Product[]): BasketLine[] {
     const basketLines: BasketLine[] = [];
     productsDatabase.forEach((product) => {
-      const productQuantity = this.#basketProductsIDQuantityMap.get(
+      const productQuantity = this.#isProductInQuantityMapAndReturnItsValue(
         product.product_uid
       );
       if (productQuantity) {
@@ -72,5 +73,11 @@ export default class ShoppingBasket {
       return basket;
     }, basket);
     return completeBasket;
+  }
+
+  #isProductInQuantityMapAndReturnItsValue(
+    productID: string
+  ): number | undefined {
+    return this.#basketProductsQuantityMap.get(productID);
   }
 }
