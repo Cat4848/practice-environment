@@ -5,3 +5,15 @@ export interface Product {
     measure: string;
   };
 }
+
+export interface Basket {
+  lines: BasketLine[];
+  totalItemCount: number;
+  total: number;
+}
+
+export interface BasketLine {
+  uid: string;
+  quantity: number;
+  subtotal: number;
+}

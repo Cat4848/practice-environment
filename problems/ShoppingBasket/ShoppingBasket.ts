@@ -1,16 +1,4 @@
-import { Product } from "./interfaces";
-
-interface Basket {
-  lines: BasketLine[];
-  totalItemCount: number;
-  total: number;
-}
-
-interface BasketLine {
-  uid: string;
-  quantity: number;
-  subtotal: number;
-}
+import { Product, Basket, BasketLine } from "./interfaces";
 
 export default class ShoppingBasket {
   constructor(basketProductsID: string[]) {
