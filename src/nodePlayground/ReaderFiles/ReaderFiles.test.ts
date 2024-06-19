@@ -9,4 +9,16 @@ test("if reads file correctly", async () => {
   expect(fileContent).toMatch(/ts-jest/gi);
 });
 
-test
+test("if file writes successfully", async () => {
+  const fileReader = new ReaderFiles();
+  const filePath = path.resolve(__dirname, "./customers.csv");
+  const fileContents = `
+    name,mobile,color,
+    Rich,04562,red,
+    Mark,02145,blue,
+    Joe,02457,green
+  `;
+
+  const fileWriteConfirmation = await fileReader.writeFile(filePath, fileContents);
+  expect(fileWriteConfirmation).toContain("successful");
+});
