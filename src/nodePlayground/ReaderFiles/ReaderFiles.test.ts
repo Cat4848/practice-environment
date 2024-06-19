@@ -19,6 +19,22 @@ test("if file writes successfully", async () => {
     Joe,02457,green
   `;
 
-  const fileWriteConfirmation = await fileReader.writeFile(filePath, fileContents);
+  const fileWriteConfirmation = await fileReader.writeFile(
+    filePath,
+    fileContents
+  );
   expect(fileWriteConfirmation).toContain("successful");
+});
+
+test("how the data is read using streams", async () => {
+  const fileReader = new ReaderFiles();
+  const customersFilePath = path.resolve(__dirname, "./customers.csv");
+  const readFileStream = await fileReader.createReadStream(customersFilePath);
+  readFileStream.on("error", (error) => {
+    console.log(`error reading data: ${error}`);
+
+    readFileStream.on("data", (chuck) => {
+      console.log("data chunk", chuck);
+    });
+  });
 });
