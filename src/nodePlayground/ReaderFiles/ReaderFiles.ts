@@ -1,13 +1,12 @@
-import fs from "node:fs";
+import fs from "node:fs/promises";
 
 export default class ReaderFiles {
-  readFile(filePath: string) {
-    fs.readFile(filePath, "utf8", (error, data) => {
-      if (error) {
-        return;
-      } else {
-        return data;
-      }
-    });
+  async readFile(filePath: string) {
+    try {
+      const data = await fs.readFile(filePath, { encoding: "utf-8" });
+      return data;
+    } catch (e) {
+      return `Unable to read data from ${filePath}`;
+    }
   }
 }
