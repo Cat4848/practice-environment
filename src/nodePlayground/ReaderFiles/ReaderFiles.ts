@@ -9,4 +9,13 @@ export default class ReaderFiles {
       return `Unable to read data from ${filePath}`;
     }
   }
+
+  async writeFile(filePath: string, content: string) {
+    try {
+      await fs.writeFile(filePath, content);
+      return "File write successful";
+    } catch (e) {
+      return `Error writing file ${filePath}`;
+    }
+  }
 }

@@ -8,3 +8,5 @@ test("if reads file correctly", async () => {
 
   expect(fileContent).toMatch(/ts-jest/gi);
 });
+
+test
