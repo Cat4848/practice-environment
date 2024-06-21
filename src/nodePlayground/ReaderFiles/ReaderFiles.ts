@@ -1,5 +1,4 @@
 import fsPromises from "node:fs/promises";
-import fs from "fs";
 
 export default class ReaderFiles {
   async readFile(filePath: string) {
@@ -18,10 +17,5 @@ export default class ReaderFiles {
     } catch (e) {
       return `Error writing file ${filePath}`;
     }
-  }
-
-  async createReadStream(filePath: string) {
-    const readableStream = fs.createReadStream(filePath);
-    return readableStream;
   }
 }

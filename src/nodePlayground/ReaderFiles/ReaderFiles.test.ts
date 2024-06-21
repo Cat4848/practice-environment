@@ -25,14 +25,3 @@ test("if file writes successfully", async () => {
   );
   expect(fileWriteConfirmation).toContain("successful");
 });
-
-test("how the data is read using streams", async () => {
-  const fileReader = new ReaderFiles();
-  const customersFilePath = path.resolve(__dirname, "./customers.csv");
-  const readFileStream = await fileReader.createReadStream(customersFilePath);
-  readFileStream.on("error", (error) => {
-
-    readFileStream.on("data", (chuck) => {
-    });
-  });
-});
