@@ -22,6 +22,7 @@ const server = createServer((req, res) => {
     .on("finish", () => {
       res.writeHead(201, { "Content-Type": "text/plain" });
       res.end("All Good!");
+      console.log(`File saved: ${destinationFile}`);
     });
 });
 
