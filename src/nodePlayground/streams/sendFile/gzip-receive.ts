@@ -14,7 +14,6 @@ const server = createServer((req, res) => {
     "/Users/cata/Documents/education/Programming/Practice/JavaScript/practice-environment/src/nodePlayground/streams/sendFile";
   const filename = basename(headers["x-filename"]);
   const destinationFile = join(dirName, "/received-files", filename);
-  console.log(`File request received for filename: ${filename}`);
 
   req
     .pipe(createGunzip())
@@ -22,8 +21,7 @@ const server = createServer((req, res) => {
     .on("finish", () => {
       res.writeHead(201, { "Content-Type": "text/plain" });
       res.end("All Good!");
-      console.log(`File saved: ${destinationFile}`);
     });
 });
 
-server.listen(4000, () => console.log("Listening on http://localhost:4000"));
+server.listen(4000);
