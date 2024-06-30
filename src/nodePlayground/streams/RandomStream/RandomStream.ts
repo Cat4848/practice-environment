@@ -8,7 +8,7 @@ export default class RandomStream extends Readable {
   constructor(options){
     super(options);
     this.emittedBytes = 0;
-  // }
+  }
   details() {
     console.log("print details");
   }
