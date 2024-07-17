@@ -10,7 +10,7 @@ export default class RandomStream extends Readable {
     this.emittedBytes = 0;
   }
   details() {
-    console.log("print details");
+    // console.log("print details")`;
   }
 
   hello() {
