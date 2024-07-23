@@ -15,3 +15,12 @@ test.each(tests)(
     expect(gcdGeneral).toBe(expected);
   }
 );
+
+test.each(tests)(
+  "if correct GCD in calculated using the subtraction method",
+  (a: number, b: number, expected: number) => {
+    const gcd = new GCD();
+    const gcdSubtraction = gcd.getGCDSubtraction(a, b);
+    expect(gcdSubtraction).toBe(expected);
+  }
+);
