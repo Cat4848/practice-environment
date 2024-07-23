@@ -27,3 +27,12 @@ test.each(tests)(
     expect(gcdSubtraction).toBe(expected);
   }
 );
+
+test.each(tests)(
+  "if correct GCD in calculated using the modulo method",
+  (a: number, b: number, expected: number) => {
+    const gcd = new GCD();
+    const gcdSubtraction = gcd.getGCDModulo(a, b);
+    expect(gcdSubtraction).toBe(expected);
+  }
+);

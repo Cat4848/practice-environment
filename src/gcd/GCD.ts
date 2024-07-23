@@ -15,4 +15,9 @@ export default class GCD {
     if (b === 0) return a;
     else return this.getGCDSubtraction(b, Math.abs(a - b));
   }
+
+  getGCDModulo(a: number, b: number): number {
+    if (b === 0) return a;
+    else return this.getGCDModulo(b, a % b);
+  }
 }
