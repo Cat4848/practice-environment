@@ -10,4 +10,9 @@ export default class GCD {
     }
     return 1;
   }
+
+  getGCDSubtraction(a: number, b: number): number {
+    if (b === 0) return a;
+    else return this.getGCDSubtraction(b, Math.abs(a - b));
+  }
 }
