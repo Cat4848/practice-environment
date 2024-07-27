@@ -18,6 +18,6 @@ export default class GCD {
 
   getGCDModulo(a: number, b: number): number {
     if (b === 0) return a;
-    else return this.getGCDModulo(b, a % b);
+    // else return this.getGCDModulo(b, a % b);
   }
 }
