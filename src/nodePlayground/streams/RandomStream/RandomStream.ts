@@ -5,8 +5,8 @@ const chance = new Chance();
 
 export default class RandomStream extends Readable {
   emittedBytes = 0;
-  constructor(options){
-    super(options);
+  constructor() {
+    super();
     this.emittedBytes = 0;
   }
   details() {
@@ -17,5 +17,3 @@ export default class RandomStream extends Readable {
     console.log("print hello");
   }
 }
-
-
