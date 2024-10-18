@@ -8,7 +8,7 @@ test("if arrays are equal", () => {
     }
   }
 
-  // const fib = fibonacciSequence();
+  const fib = fibonacciSequence();
 
   function fibonacci(n: number) {
     for (const f of fibonacciSequence()) {
