@@ -12,9 +12,7 @@ test("if arrays are equal", () => {
 
   function fibonacci(n: number) {
     for (const f of fibonacciSequence()) {
-      console.log("fib number", f, n);
       if (n-- <= 0) return f;
     }
   }
-  console.log("20th number", fibonacci(20));
 });
