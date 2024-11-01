@@ -1,6 +1,14 @@
-test("if arrays are equal", () => {
-  const a = '1001';
-  const res = a.matchAll(/1/g);
-  const spred = [...res];
+test("if arrays are equal", async () => {
+  async function delay(ms: number) {
+    return "done";
+  }
+  const res = delay(1000);
+  console.log("res", res);
 
+  const promise = new Promise((resolve, reject) => {
+    resolve("done");
+    reject("not done");
+  });
+
+  console.log("promise", promise);
 });
