@@ -16,5 +16,5 @@ test("if arrays are equal", async () => {
 
   //  expect(putRes)
   deepEqual(first.value, putRes);
-  // console.log("first", first);
+  console.log("first", first);
 });
