@@ -1,14 +1,20 @@
+import { deepEqual } from "assert";
+import { put } from "redux-saga/effects";
+
 test("if arrays are equal", async () => {
-  async function delay(ms: number) {
-    return "done";
+  const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));
+  const putRes = put({ type: "put-test-action" });
+  console.log("putRes", putRes);
+
+  function* helloHere() {
+    yield "continue";
+    // yield delay(2000);
   }
-  const res = delay(1000);
-  console.log("res", res);
 
-  const promise = new Promise((resolve, reject) => {
-    resolve("done");
-    reject("not done");
-  });
+  const res = helloHere();
+  const first = res.next();
 
-  console.log("promise", promise);
+  //  expect(putRes)
+  deepEqual(first.value, putRes);
+  // console.log("first", first);
 });

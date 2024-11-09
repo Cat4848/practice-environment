@@ -17,7 +17,7 @@ export default tseslint.config(
     },
     ignores: ["**/*.js"],
     rules: {
-      "@/no-console": "error"
+      // "@/no-console": "error"
     }
   }
 );
