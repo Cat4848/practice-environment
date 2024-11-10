@@ -9,7 +9,7 @@ test("if arrays are equal", async () => {
   function* helloHere() {
     yield "continue";
     yield takeLatest("action-string-test", () =>
-      // console.log("within the helloThere saga")
+      console.log("within the helloThere saga")
     );
     // yield delay(2000);
   }
