@@ -11,7 +11,7 @@ test("if arrays are equal", async () => {
     yield takeLatest("action-string-test", () =>
       console.log("within the helloThere saga")
     );
-    // yield delay(2000);
+    yield delay(2000);
   }
 
   const res = helloHere();
