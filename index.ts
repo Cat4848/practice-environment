@@ -11,4 +11,4 @@ function addition(num1: number, num2: number) {
 }
 
 add(a, b);
-// addition(a, b);
+addition(a, b);
