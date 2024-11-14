@@ -5,6 +5,14 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "Attach to Chrome",
+      "port": 4000,
+      "request": "launch",
+      "type": "chrome",
+      "webRoot": "${workspaceFolder}",
+      "file": "${workspaceFolder}/client/index.html"
+    },
+    {
       "type": "node",
       "request": "launch",
       "name": "Launch Program",
